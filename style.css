@@ -97,6 +97,13 @@ img {
   background: #ec9a2e;
 }
 
+.button.operator:active {
+  color: #ec9a2e;
+  background: white;
+  filter: brightness(100%);
+}
+
+
 .button.number-0 {
   width: 170px;
   border-radius: 55px;
