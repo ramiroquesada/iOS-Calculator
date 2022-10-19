@@ -36,7 +36,7 @@ const operatorElArray = [divisionButtonEl, multiplicationButtonEl, subtractionBu
 aCButtonEl.addEventListener('click', ()=>{
     
 
-    DisplayEl.innerHTML = "0"
+    DisplayEl.value = 0;
     aCButtonEl.innerHTML = "AC";
 
     for(i=0; i<operatorElArray.length;i++){
@@ -50,11 +50,11 @@ aCButtonEl.addEventListener('click', ()=>{
 // AC to C to AC
 
 const buttonToAC = ()=>{
-    if (DisplayEl.innerHTML == 0){
+    if (DisplayEl.value == 0){
         aCButtonEl.innerHTML = "AC";
         
         // changes the screen at the start of the typing to nothing
-        DisplayEl.innerHTML = "";
+        DisplayEl.value = null;
         decoloredFunction();
 
         
@@ -62,7 +62,7 @@ const buttonToAC = ()=>{
 };
 
 const buttonToC =()=>{
-    if (DisplayEl.innerHTML != 0){
+    if (DisplayEl.value != 0){
         aCButtonEl.innerHTML = "C";}
 };
 
@@ -81,7 +81,7 @@ for(let i = 0; i < numberElArray.length; i++){
         buttonToAC();
         
 
-        DisplayEl.innerHTML += i;
+        DisplayEl.value += i;
 
         buttonToC();
        
@@ -90,7 +90,19 @@ for(let i = 0; i < numberElArray.length; i++){
 
 }
 
-// Operations to activeOperation
+
+
+
+
+
+
+
+// comma
+
+decimalButtonEl.addEventListener("click", ()=>{
+    
+    DisplayEl.value += ",";
+})
 
 
 
@@ -128,10 +140,14 @@ for(i=0; i<operatorElArray.length;i++){
     decoloredFunction();    
     coloredFunction(e);
 
-    calcMemory = DisplayEl.innerHTML;
-    console.log(e)
+    calcMemory = DisplayEl.value;
+
+    
+   
 
     currentOperator = e.path[0].innerHTML;
+
+   
 
     
 
@@ -151,23 +167,19 @@ for(i=0; i<operatorElArray.length;i++){
 
 // EQUAL =======
 
+equalButtonEl.addEventListener("click", ()=>{
+
+    let displayNum = parseFloat(DisplayEl.value)
+    let calcMemNum = parseFloat(calcMemory)
+
+    DisplayEl.value = displayNum + currentOperator +calcMemNum
 
 
-
-
-
-
-
-// additionButtonEl.addEventListener('click', (e)=>{
-
-
-//     //additionButtonEl.classList.remove('operator')
     
-//     coloredFunction(e);
+    
+})
 
-//     calcMemory = DisplayEl.innerHTML;
 
-//     currentOperator = "addition";
 
-//     console.log(calcMemory)
-// })
+
+
