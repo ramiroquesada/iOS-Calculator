@@ -18,10 +18,13 @@ const num0ButtonEl = document.querySelector('.number-0');
 const num1ButtonEl = document.querySelector('.number-1');
 const num2ButtonEl = document.querySelector('.number-2');
 const num3ButtonEl = document.querySelector('.number-3');
+const additionButtonEl = document.querySelector('.addition')
 const decimalButtonEl = document.querySelector('.decimal')
 const equalButtonEl = document.querySelector('.equal');
 
 const numberElArray = [num0ButtonEl, num1ButtonEl, num2ButtonEl, num3ButtonEl, num4ButtonEl, num5ButtonEl, num6ButtonEl, num7ButtonEl, num8ButtonEl, num9ButtonEl];
+
+const operatorElArray = [divisionButtonEl, multiplicationButtonEl, subtractionButtonEl, additionButtonEl];
 
 //Functions
 
@@ -34,24 +37,137 @@ aCButtonEl.addEventListener('click', ()=>{
     
 
     DisplayEl.innerHTML = "0"
-})
+    aCButtonEl.innerHTML = "AC";
 
-// Changes AC button depending on screen
-
-DisplayEl.addEventListener('change', ()=>{
-    if (DisplayEl.innerHTML != 0){
-        aCButtonEl.innerHTML = "C";
+    for(i=0; i<operatorElArray.length;i++){
+        operatorElArray[i].classList.remove('actived')
     }
+
+
 })
+
+
+// AC to C to AC
+
+const buttonToAC = ()=>{
+    if (DisplayEl.innerHTML == 0){
+        aCButtonEl.innerHTML = "AC";
+        
+        // changes the screen at the start of the typing to nothing
+        DisplayEl.innerHTML = "";
+        decoloredFunction();
+
+        
+    }
+};
+
+const buttonToC =()=>{
+    if (DisplayEl.innerHTML != 0){
+        aCButtonEl.innerHTML = "C";}
+};
+
+
+
+
 
 // Numbers to screen
 for(let i = 0; i < numberElArray.length; i++){
     const numberEl = numberElArray[i];
 
     numberEl.addEventListener('click', ()=>{
-                
+
+        decoloredFunction(); 
+        
+        buttonToAC();
+        
+
         DisplayEl.innerHTML += i;
+
+        buttonToC();
+       
     })
 
 
 }
+
+// Operations to activeOperation
+
+
+
+
+
+
+// maths
+
+let currentOperator = "";
+
+let calcMemory;
+
+
+
+
+const coloredFunction = (e) => {
+    
+    e.path[0].classList.add('actived');
+}
+
+
+const decoloredFunction = () =>{
+    for(i=0; i<operatorElArray.length;i++){
+        operatorElArray[i].classList.remove('actived')
+    }
+
+
+}
+
+
+//operator function
+for(i=0; i<operatorElArray.length;i++){
+    operatorElArray[i].addEventListener('click', (e)=>{
+
+    decoloredFunction();    
+    coloredFunction(e);
+
+    calcMemory = DisplayEl.innerHTML;
+    console.log(e)
+
+    currentOperator = e.path[0].innerHTML;
+
+    
+
+
+    console.log(calcMemory)
+    console.log(currentOperator)
+
+      
+
+
+
+    })
+
+
+}
+
+
+// EQUAL =======
+
+
+
+
+
+
+
+
+// additionButtonEl.addEventListener('click', (e)=>{
+
+
+//     //additionButtonEl.classList.remove('operator')
+    
+//     coloredFunction(e);
+
+//     calcMemory = DisplayEl.innerHTML;
+
+//     currentOperator = "addition";
+
+//     console.log(calcMemory)
+// })

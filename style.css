@@ -97,9 +97,15 @@ img {
   background: #ec9a2e;
 }
 
-.button.operator:active {
+/* .button.operator:active {
   color: #ec9a2e;
   background: white;
+  filter: brightness(100%);
+} */
+
+.actived{
+  color: #ec9a2e;
+  background: white !important;
   filter: brightness(100%);
 }
 
