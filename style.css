@@ -53,14 +53,30 @@ img {
 
 /* Display*/
 
+
 .display {
   height: 300px;
   font-size: 100px;
   text-align: right;
-  display: flex;
-  flex-direction: column-reverse;
   margin-bottom: 15px;
+  color: white;
+  background-color: black;
+  border: none;
+  padding-top: 200px;
+  width: 100%;
+  
+  pointer-events:none
 }
+
+
+  
+
+.display::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  
+}
+
+
 
 /* Buttons*/
 

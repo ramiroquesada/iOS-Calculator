@@ -55,10 +55,10 @@ let result;
 
 // Button AC
 aCButtonEl.addEventListener("click", () => {
-  DisplayEl.innerHTML = "0";
-  aCButtonEl.innerHTML = "AC";
-  currentValue = 0;
-  currentOperator = null;
+    DisplayEl.innerHTML = "0";
+    aCButtonEl.innerHTML = "AC";
+    currentValue = 0;
+    currentOperator = null;
 
   for (i = 0; i < operatorElArray.length; i++) {
     operatorElArray[i].classList.remove("actived");
@@ -68,13 +68,14 @@ aCButtonEl.addEventListener("click", () => {
 // AC to C to AC
 
 const buttonToAC = () => {
-  if (DisplayEl.innerHTML == 0) {
-    aCButtonEl.innerHTML = "AC";
-
-    // changes the screen at the start of the typing to nothing
-    DisplayEl.innerHTML = "";
-    decoloredFunction();
-  }
+    if (DisplayEl.innerHTML == 0) {
+      aCButtonEl.innerHTML = "AC";
+  
+      // changes the screen at the start of the typing to nothing
+      DisplayEl.innerHTML = "";
+      decoloredFunction();
+    }
+    
 };
 
 const buttonToC = () => {
