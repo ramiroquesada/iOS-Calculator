@@ -113,10 +113,15 @@ decimalButtonEl.addEventListener("click", () => {
     let string = DisplayEl.innerHTML;
     
     if(string.includes(substring)){
+      
         return;
+        
     }
     else {
+      
         DisplayEl.innerHTML += ".";
+        
+        
     }
 });
 
@@ -129,9 +134,13 @@ for (let i = 0; i < numberElArray.length; i++) {
 
     buttonToAC();
 
-    if (currentOperator && currentValue === 0) {
+   
+   
+    if (currentOperator && currentValue == 0) {
       DisplayEl.innerHTML = "";
     }
+
+   
 
     DisplayEl.innerHTML += i;
 
@@ -144,7 +153,7 @@ for (let i = 0; i < numberElArray.length; i++) {
 // maths
 
 const coloredFunction = (e) => {
-  e.path[0].classList.add("actived");
+  e.target.classList.add("actived");
 };
 
 const decoloredFunction = () => {
@@ -161,7 +170,7 @@ for (i = 0; i < operatorElArray.length; i++) {
 
     calcMemory = DisplayEl.innerHTML;
 
-    currentOperator = e.path[0].innerHTML;
+    currentOperator = e.target.innerHTML;
 
     currentValue = 0;
   });
